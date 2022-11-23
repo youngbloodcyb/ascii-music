@@ -3,9 +3,9 @@ const map = (n, start1, stop1, start2, stop2) => {
     return newval;
 }
 
-const density = 'Ñ@#W$987654321?!abc;:+=-,._ ';
+// const density = 'Ñ@#W$987654321?!abc;:+=-,._ ';
 // const density = '       .:-i|=+%O#@'
-// const density = '        .:░▒▓█';
+const density = ' .:░▒▓█';
 const ascii = document.getElementById("ascii");
 
 
@@ -28,11 +28,14 @@ setInterval(() => {
     analyzer.getByteFrequencyData(dataArray);
     // ascii.innerText = dataArray;
     let slicedArray = dataArray.slice(0, 484);
-    const newArr = slicedArray.map((el, i) => {
-        const char = Math.floor(map(slicedArray[i], 0, 483, 0, density.length));
-        el = density.charAt(char);
+    const newArr = [];
+    slicedArray.map((el, i) => {
+        const char =  Math.floor(map(slicedArray[i], 0, 483, 0, density.length));
+        const elem = density.charAt(char);
+        newArr.push(elem);
     });
     console.log(newArr);
+    // console.log(slicedArray)
     // for (let i = 0; i < slicedArray.length; i++) {
     //     const char = Math.floor(map(slicedArray[i], 0, 484, 0, density.length))
     //     console.log(density.charAt(char));
