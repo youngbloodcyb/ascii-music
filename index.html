@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
     <script defer type="module" src="/index.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./src/index.css">
   </head>
-  <body>
-    <h1>Test</h1>
+  <body class="w-screen h-screen flex flex-col bg-black text-white justify-center items-center font-mono lowercase">
+    <h1 class="text-2xl">ascii music</h1>
+    <button class="border border-white rounded-md p-4">initialize audio</button>
     <audio src="./synth.mp3" id="audio" type="audio/mpeg" preload="none" controls></audio>
     <!-- <canvas id="canvas" width="300" height="300"></canvas> -->
-    <pre id="ascii"></pre>
-    <button>click me to play</button>
+    <pre id="ascii" class=""></pre>
   </body>
 </html>

@@ -4,8 +4,8 @@ const map = (n, start1, stop1, start2, stop2) => {
 }
 
 // const density = 'Ñ@#W$987654321?!abc;:+=-,._ ';
-// const density = '       .:-i|=+%O#@'
-const density = ' .:░▒▓█';
+const density = ' .:-i|=+%O#@'
+// const density = ' ..::░░▒▒▓▓██';
 const ascii = document.getElementById("ascii");
 
 
@@ -25,6 +25,7 @@ document.querySelector('button').addEventListener('click', function() {
   });
 
 setInterval(() => {
+    ascii.innerHTML = '';
     analyzer.getByteFrequencyData(dataArray);
     // ascii.innerText = dataArray;
     let slicedArray = dataArray.slice(0, 484);
@@ -35,26 +36,9 @@ setInterval(() => {
         newArr.push(elem);
     });
     console.log(newArr);
-    // console.log(slicedArray)
-    // for (let i = 0; i < slicedArray.length; i++) {
-    //     const char = Math.floor(map(slicedArray[i], 0, 484, 0, density.length))
-    //     console.log(density.charAt(char));
-    // }
+
+    for (let i = 0; i < newArr.length; i++) {
+      i % 21 == 0 ? ascii.innerHTML += '<br>' : ' ';
+      ascii.innerHTML += newArr[i];
+    }
 }, 100);
-
-// 484
-// ---------------------------------------------------------- //
-
-const drawAscii = (grayScales, width) => {
-    const ascii = grayScales.reduce((asciiImage, grayScale, index) => {
-      let nextChars = getCharacterForGrayScale(grayScale);
-  
-      if ((index + 1) % width === 0) {
-        nextChars += "\n";
-      }
-  
-      return asciiImage + nextChars;
-    }, "");
-  
-    asciiImage.textContent = ascii;
-  };
