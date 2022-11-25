@@ -4,8 +4,10 @@ const map = (n, start1, stop1, start2, stop2) => {
 }
 
 // const density = 'Ñ@#W$987654321?!abc;:+=-,._ ';
-const density = ' .:-i|=+%O#@'
-// const density = ' ..::░░▒▒▓▓██';
+// const density = ' .:-i|=+%O#@'
+// const density = ' .,-+~=;:/$&!]░░▒▒▓▓██';
+const density = ' .,-+~=;:/$&!]░░▒▒▓▓██Ñ@#W$987654321?!abc;:+=-,._ ';
+// const density = ' ░░▒▒▓▓██';
 const ascii = document.getElementById("ascii");
 
 
@@ -27,18 +29,18 @@ document.querySelector('button').addEventListener('click', function() {
 setInterval(() => {
     ascii.innerHTML = '';
     analyzer.getByteFrequencyData(dataArray);
-    // ascii.innerText = dataArray;
-    let slicedArray = dataArray.slice(0, 484);
+    
+    let slicedArray = dataArray.slice(0, 2048);
+    
     const newArr = [];
     slicedArray.map((el, i) => {
         const char =  Math.floor(map(slicedArray[i], 0, 483, 0, density.length));
         const elem = density.charAt(char);
         newArr.push(elem);
     });
-    console.log(newArr);
 
     for (let i = 0; i < newArr.length; i++) {
-      i % 21 == 0 ? ascii.innerHTML += '<br>' : ' ';
+      i % 40 == 0 ? ascii.innerHTML += '<br>' : ' ';
       ascii.innerHTML += newArr[i];
     }
 }, 100);
